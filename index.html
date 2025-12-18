@@ -8,25 +8,26 @@
     <script defer src="script.js"></script>
 </head>
 <body>  
+   <!-- Header & Navigation -->
     <header>
-        <div class="container header-content">
-            <div class="logo">
-                <div class="logo-icon">
-                    <i class="fas fa-bolt"></i>
-                </div>
-                <div class="logo-text">Pulse<span>crafts</span></div>
-            </div>
-            
-            <div class="mobile-menu" id="mobileMenu">
-                <i class="fas fa-bars"></i>
-            </div>
-            
+        <div class="container">
             <nav>
-                <ul id="navMenu">
+                <a href="#" class="logo">
+                    <i class="fas fa-bolt"></i> Pulsecraft
+                </a>
+                
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <ul class="nav-links" id="navLinks">
                     <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
                     <li><a href="#services">Services</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
                     <li><a href="#contact">Contact</a></li>
+                    
                 </ul>
             </nav>
         </div>
@@ -35,158 +36,447 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="container">
-            <h1>Transform Your Digital Future with Pulsecraft Worksuite</h1>
-            <p>Comprehensive technology solutions integrating cryptocurrency services, cloud infrastructure, and innovative worksuite tools for modern businesses.</p>
-            <a href="#services" class="cta-button">Explore Our Services</a>
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Transform Your Digital Future with Pulsecraft</h1>
+                    <p>Comprehensive technology solutions integrating cryptocurrency services, cloud infrastructure, and innovative worksuite tools for modern businesses.</p>
+                    <div class="hero-btns">
+                        <a href="#contact" class="btn">Get Started</a>
+                        <a href="#features" class="btn btn-secondary">Explore Features</a>
+                    </div>
+                </div>
+                <!--<div class="hero-image">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Pulsecraft Worksuite Dashboard">
+                    <div class="floating-shape shape-1"></div>
+                    <div class="floating-shape shape-2"></div>
+                </div>-->
+            </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section class="section" id="about">
+    <!-- Partners Section -->
+    <section class="partners">
         <div class="container">
-            <div class="section-title">
-                <h2>About Pulsecraft Worksuite</h2>
-                <p>Discover how we're revolutionizing the way businesses leverage technology for growth and efficiency.</p>
-            </div>
-            
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>Powering the Future of Business Technology</h3>
-                    <p>Pulsecraft Worksuite is a comprehensive technology platform designed to integrate and streamline your business operations. We combine cutting-edge cryptocurrency solutions with robust cloud infrastructure and productivity tools to create a seamless digital ecosystem.</p>
-                    <p>Our mission is to empower businesses of all sizes to leverage emerging technologies without the complexity typically associated with implementation. With Pulsecraft, you get a unified platform that adapts to your evolving needs.</p>
-                    <p>Founded in 2018, we've grown to serve over 500 businesses worldwide, from startups to enterprise organizations, helping them navigate the digital transformation landscape with confidence and security.</p>
-                    <a href="#contact" class="cta-button">Get In Touch</a>
-                </div>
-                <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Pulsecraft Workspace">
-                </div>
+            <h3>Trusted by Industry Leaders</h3>
+            <div class="partner-logos">
+                <div class="partner-logo">TechCorp</div>
+                <div class="partner-logo">InnovateCo</div>
+                <div class="partner-logo">GlobalSoft</div>
+                <div class="partner-logo">DigitalFirst</div>
+                <div class="partner-logo">FutureSystems</div>
             </div>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section class="section services" id="services">
+    <section class="services" id="services">
         <div class="container">
-            <div class="section-title">
-                <h2>Our Comprehensive Services</h2>
-                <p>We offer a complete suite of technology services designed to meet the diverse needs of modern businesses.</p>
-            </div>
-            
+            <h2>Our Comprehensive Services</h2>
             <div class="services-grid">
-                <!-- Service 1 -->
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-suitcase"></i>
+                        <i class="fas fa-layer-group"></i>
                     </div>
                     <h3>Pulsecraft Worksuite</h3>
                     <p>A complete integrated workspace solution that combines productivity, collaboration, and project management tools in one seamless platform.</p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Integrated project management</li>
-                        <li><i class="fas fa-check"></i> Team collaboration tools</li>
-                        <li><i class="fas fa-check"></i> Automated workflow systems</li>
-                        <li><i class="fas fa-check"></i> Real-time analytics dashboard</li>
-                        <li><i class="fas fa-check"></i> Customizable workspace modules</li>
-                    </ul>
+                    <a href="#" class="btn btn-outline">Learn More</a>
                 </div>
                 
-                <!-- Service 2 -->
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-coins"></i>
                     </div>
-                    <h3>Crypto Currency Services</h3>
+                    <h3>Crypto Services</h3>
                     <p>End-to-end cryptocurrency solutions including secure wallets, trading platforms, blockchain integration, and payment processing.</p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Secure cryptocurrency wallets</li>
-                        <li><i class="fas fa-check"></i> Blockchain integration services</li>
-                        <li><i class="fas fa-check"></i> Crypto payment processing</li>
-                        <li><i class="fas fa-check"></i> Trading platform development</li>
-                        <li><i class="fas fa-check"></i> NFT marketplace solutions</li>
-                        <li><i class="fas fa-check"></i> DeFi application development</li>
-                    </ul>
+                    <a href="#" class="btn btn-outline">Learn More</a>
                 </div>
                 
-                <!-- Service 3 -->
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-cloud"></i>
                     </div>
-                    <h3>Cloud Related Services</h3>
+                    <h3>Cloud Services</h3>
                     <p>Comprehensive cloud infrastructure, migration, and management services across all major platforms with 24/7 support and monitoring.</p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Cloud migration & strategy</li>
-                        <li><i class="fas fa-check"></i> Multi-cloud management</li>
-                        <li><i class="fas fa-check"></i> Infrastructure as a Service (IaaS)</li>
-                        <li><i class="fas fa-check"></i> Platform as a Service (PaaS)</li>
-                        <li><i class="fas fa-check"></i> Cloud security & compliance</li>
-                        <li><i class="fas fa-check"></i> Disaster recovery solutions</li>
-                    </ul>
+                    <a href="#" class="btn btn-outline">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2>Advanced Platform Features</h2>
+            
+            <div class="features-tabs">
+                <button class="tab-btn active" data-tab="worksuite">Worksuite</button>
+                <button class="tab-btn" data-tab="crypto">Crypto Services</button>
+                <button class="tab-btn" data-tab="cloud">Cloud Services</button>
+            </div>
+            
+            <div class="tab-content active" id="worksuite-tab">
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <i class="fas fa-tasks"></i>
+                        <h4>Integrated Project Management</h4>
+                        <p>Manage projects, tasks, and teams in a unified interface with real-time updates.</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-users"></i>
+                        <h4>Team Collaboration Tools</h4>
+                        <p>Built-in chat, video calls, and document collaboration for distributed teams.</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-cogs"></i>
+                        <h4>Automated Workflow Systems</h4>
+                        <p>Create custom workflows to automate repetitive tasks and processes.</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-chart-line"></i>
+                        <h4>Real-time Analytics Dashboard</h4>
+                        <p>Monitor KPIs and performance metrics with customizable dashboards.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="crypto-tab">
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <i class="fas fa-wallet"></i>
+                        <h4>Secure Cryptocurrency Wallets</h4>
+                        <p>Multi-signature wallets with advanced security protocols for asset protection.</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-link"></i>
+                        <h4>Blockchain Integration</h4>
+                        <p>Seamless integration with major blockchain networks for business applications.</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-shopping-cart"></i>
+                        <h4>Crypto Payment Processing</h4>
+                        <p>Accept cryptocurrency payments with automatic conversion and settlement.</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-chart-bar"></i>
+                        <h4>Trading Platform Development</h4>
+                        <p>Custom trading platforms with advanced charting and execution tools.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="cloud-tab">
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <i class="fas fa-server"></i>
+                        <h4>Cloud Migration & Strategy</h4>
+                        <p>Comprehensive migration planning and execution with minimal downtime.</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-clouds"></i>
+                        <h4>Multi-cloud Management</h4>
+                        <p>Unified management console for AWS, Azure, Google Cloud and private clouds.</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <h4>Cloud Security & Compliance</h4>
+                        <p>End-to-end security solutions meeting industry compliance standards.</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-redo"></i>
+                        <h4>Disaster Recovery Solutions</h4>
+                        <p>Automated backup and disaster recovery with guaranteed RTO and RPO.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section 
+    <section class="stats">
+        <div class="container">
+            <h2>By The Numbers</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3 class="counter" data-target="500">0</h3>
+                    <p>Businesses Worldwide</p>
+                </div>
+                <div class="stat-item">
+                    <h3 class="counter" data-target="99">0</h3>
+                    <p>% Uptime Guarantee</p>
+                </div>
+                <div class="stat-item">
+                    <h3 class="counter" data-target="45">0</h3>
+                    <p>Countries Served</p>
+                </div>
+                <div class="stat-item">
+                    <h3 class="counter" data-target="24">0</h3>
+                    <p>/7 Support</p>
+                </div>
+            </div>
+        </div>
+    </section>-->
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <h2>What Our Clients Say</h2>
+            <div class="testimonial-slider">
+                <div class="testimonial-slides" id="testimonialSlides">
+                    <div class="testimonial-slide">
+                        <div class="testimonial-content">
+                            "Pulsecraft Worksuite transformed our operations. The integrated platform saved us 40% in software costs and improved team productivity by 60%. The cryptocurrency integration was seamless."
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">SJ</div>
+                            <div>
+                                <h4>Sarah Johnson</h4>
+                                <p>CTO, TechInnovate Inc.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-slide">
+                        <div class="testimonial-content">
+                            "The cloud migration service was flawless. Our transition to a multi-cloud environment was completed in half the expected time with zero downtime. The team's expertise is exceptional."
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">MR</div>
+                            <div>
+                                <h4>Michael Rodriguez</h4>
+                                <p>CEO, GlobalCommerce Solutions</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-slide">
+                        <div class="testimonial-content">
+                            "As a fintech startup, we needed secure crypto payment processing. Pulsecraft delivered a custom solution that exceeded our expectations. Their blockchain integration is cutting-edge."
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">AK</div>
+                            <div>
+                                <h4>Alex Kim</h4>
+                                <p>Founder, CryptoPay Technologies</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="slider-controls">
+                    <button class="slider-btn active" data-slide="0"></button>
+                    <button class="slider-btn" data-slide="1"></button>
+                    <button class="slider-btn" data-slide="2"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team" id="about">
+        <div class="container">
+            <h2>Meet Our Leadership Team</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-img">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <div class="member-info">
+                        <h3>David Chen</h3>
+                        <div class="member-role">CEO & Founder</div>
+                        <p>Former Google Cloud architect with 15+ years in enterprise technology solutions.</p>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-img">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <div class="member-info">
+                        <h3>Maria Gonzalez</h3>
+                        <div class="member-role">CTO</div>
+                        <p>Blockchain expert with patents in distributed ledger technology and security.</p>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-img">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <div class="member-info">
+                        <h3>James Wilson</h3>
+                        <div class="member-role">Head of Cloud Services</div>
+                        <p>Former AWS solutions architect specializing in multi-cloud infrastructure.</p>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-img">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <div class="member-info">
+                        <h3>Lisa Thompson</h3>
+                        <div class="member-role">Head of Product</div>
+                        <p>Product leader with experience at Salesforce and Microsoft building enterprise SaaS.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How secure is the Pulsecraft platform?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We implement bank-level security with end-to-end encryption, multi-factor authentication, and regular third-party security audits. Our infrastructure is SOC 2 Type II compliant and follows industry best practices for data protection.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can I integrate Pulsecraft with my existing systems?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, Pulsecraft offers comprehensive APIs and integration tools for connecting with most popular business systems including CRM, ERP, accounting software, and custom enterprise applications.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What is the implementation timeline?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Implementation timelines vary based on complexity. Standard Worksuite deployments take 2-4 weeks. Cloud migrations typically require 4-8 weeks. Crypto service integrations can be completed in 3-6 weeks. We provide a detailed project plan during the consultation phase.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do you offer customized solutions?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely. While our platform offers comprehensive out-of-the-box functionality, we specialize in creating tailored solutions to meet specific business requirements. Our solutions architects work closely with clients to design custom implementations.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What kind of support do you provide?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We offer 24/7/365 premium support with guaranteed response times. Support includes dedicated account managers, technical support engineers, and access to our knowledge base. Enterprise clients receive a dedicated customer success manager.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- CTA Section -->
-    <section class="cta-section">
+    <section class="cta" id="contact">
         <div class="container">
             <h2>Ready to Transform Your Business?</h2>
             <p>Join hundreds of businesses that have already integrated Pulsecraft Worksuite into their operations. Let's discuss how we can help you achieve your technology goals.</p>
-            <a href="#contact" class="cta-button">Schedule a Consultation</a>
+            <a href="#contact-form" class="btn">Schedule a Consultation</a>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer id="contact">
+    <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="footer-column">
-                    <div class="logo">
-                        <div class="logo-icon">
-                            <i class="fas fa-bolt"></i>
-                        </div>
-                        <div class="logo-text">Pulse<span>craft</span></div>
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <i class="fas fa-bolt"></i> Pulsecraft
                     </div>
-                    <p style="margin-top: 20px;">Pulsecraft Worksuite provides integrated technology solutions for modern businesses, combining cryptocurrency services, cloud infrastructure, and productivity tools.</p>
+                    <p>Comprehensive technology solutions integrating cryptocurrency services, cloud infrastructure, and innovative worksuite tools for modern businesses.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
                 </div>
                 
-                <div class="footer-column">
-                    <h3>Quick Links</h3>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
                     <ul>
                         <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About Us</a></li>
                         <li><a href="#services">Services</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
                 
-                <div class="footer-column">
-                    <h3>Our Services</h3>
+                <div class="footer-services">
+                    <h4>Services</h4>
                     <ul>
-                        <li><a href="#services">Pulsecraft Worksuite</a></li>
-                        <li><a href="#services">Crypto Currency Services</a></li>
-                        <li><a href="#services">Cloud Related Services</a></li>
+                        <li><a href="#">Pulsecraft Worksuite</a></li>
+                        <li><a href="#">Crypto Services</a></li>
+                        <li><a href="#">Cloud Services</a></li>
+                        <li><a href="#">Consulting</a></li>
+                        <li><a href="#">Support</a></li>
+                        <li><a href="#">Custom Solutions</a></li>
                     </ul>
                 </div>
                 
-                <div class="footer-column">
-                    <h3>Contact Us</h3>
-                    <div class="contact-info">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <p>123 Tech Boulevard, San Francisco, CA 94107</p>
-                    </div>
-                    <div class="contact-info">
-                        <i class="fas fa-phone"></i>
-                        <p>+1 (555) 123-4567</p>
-                    </div>
-                    <div class="contact-info">
-                        <i class="fas fa-envelope"></i>
-                        <p>info@pulsecraft.com</p>
-                    </div>
+                <div class="footer-contact">
+                    <h4>Contact Us</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Tech Street, San Francisco, CA 94107</p>
+                    <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                    <p><i class="fas fa-envelope"></i> info@pulsecraft.com</p>
+                    <p><i class="fas fa-clock"></i> Mon-Fri: 9am-6pm PST</p>
                 </div>
             </div>
             
             <div class="copyright">
-                <p>&copy; 2023 Pulsecraft Worksuite. All rights reserved.</p>
+                <p>&copy; 2023 Pulsecraft Worksuite. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
             </div>
         </div>
     </footer>
+
+    <!-- Live Chat Button -->
+    <div class="live-chat-btn" id="liveChatBtn">
+        <i class="fas fa-comment-dots"></i>
+    </div>
+
+    <!-- Demo Modal -->
+    <div class="demo-modal" id="demoModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Pulsecraft Worksuite Demo</h3>
+                <button class="close-modal" id="closeModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Experience the power of Pulsecraft Worksuite with our interactive demo. See how our integrated platform can transform your business operations.</p>
+                <div style="background: #f5f5f5; height: 300px; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin: 20px 0;">
+                    <div style="text-align: center;">
+                        <i class="fas fa-play-circle" style="font-size: 4rem; color: var(--primary); margin-bottom: 20px;"></i>
+                        <h3>Interactive Platform Demo</h3>
+                        <p>Click play to explore the Pulsecraft Worksuite interface</p>
+                    </div>
+                </div>
+                <p>Our demo showcases:</p>
+                <ul style="margin-bottom: 20px;">
+                    <li>Unified dashboard with real-time analytics</li>
+                    <li>Project management and team collaboration tools</li>
+                    <li>Crypto wallet integration and transaction management</li>
+                    <li>Cloud infrastructure monitoring and management</li>
+                </ul>
+                <a href="#contact" class="btn">Request Full Demo</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
