@@ -1,185 +1,198 @@
-// Mobile menu toggle
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const navLinks = document.getElementById('navLinks');
+// Mobile Menu Toggle
+const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+const navMenu = document.getElementById('navMenu');
+
+mobileMenuBtn.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+    mobileMenuBtn.innerHTML = navMenu.classList.contains('active') 
+        ? '<i class="fas fa-times"></i>' 
+        : '<i class="fas fa-bars"></i>';
+});
+
+// Close mobile menu when clicking on a link
+document.querySelectorAll('#navMenu a').forEach(link => {
+    link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+    });
+});
+
+// Header scroll effect
+const header = document.getElementById('header');
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 100) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
+});
+
+// Features Tabs
+const tabBtns = document.querySelectorAll('.tab-btn');
+const featuresContents = document.querySelectorAll('.features-content');
+
+tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        // Remove active class from all buttons and contents
+        tabBtns.forEach(b => b.classList.remove('active'));
+        featuresContents.forEach(content => content.classList.remove('active'));
         
-        mobileMenuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
-                ? '<i class="fas fa-times"></i>' 
-                : '<i class="fas fa-bars"></i>';
+        // Add active class to clicked button
+        btn.classList.add('active');
+        
+        // Show corresponding content
+        const tabId = btn.getAttribute('data-tab');
+        document.getElementById(tabId).classList.add('active');
+    });
+});
+
+// Testimonials Slider
+const testimonialDots = document.querySelectorAll('.slider-dot');
+const testimonials = document.querySelectorAll('.testimonial');
+let currentSlide = 0;
+
+function showSlide(index) {
+    // Hide all testimonials
+    testimonials.forEach(testimonial => {
+        testimonial.classList.remove('active');
+    });
+    
+    // Remove active class from all dots
+    testimonialDots.forEach(dot => {
+        dot.classList.remove('active');
+    });
+    
+    // Show selected testimonial and activate dot
+    testimonials[index].classList.add('active');
+    testimonialDots[index].classList.add('active');
+    currentSlide = index;
+}
+
+// Add click events to dots
+testimonialDots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+        showSlide(index);
+    });
+});
+
+// Auto slide testimonials
+setInterval(() => {
+    currentSlide = (currentSlide + 1) % testimonials.length;
+    showSlide(currentSlide);
+}, 5000);
+
+// FAQ Accordion
+const faqQuestions = document.querySelectorAll('.faq-question');
+
+faqQuestions.forEach(question => {
+    question.addEventListener('click', () => {
+        const answer = question.nextElementSibling;
+        const isOpen = answer.classList.contains('open');
+        
+        // Close all answers
+        document.querySelectorAll('.faq-answer').forEach(ans => {
+            ans.classList.remove('open');
         });
         
-        // Close mobile menu when clicking a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-            });
+        // Remove active class from all questions
+        document.querySelectorAll('.faq-question').forEach(q => {
+            q.classList.remove('active');
         });
         
-        // Tab functionality
-        const tabBtns = document.querySelectorAll('.tab-btn');
-        const tabContents = document.querySelectorAll('.tab-content');
-        
-        tabBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                // Remove active class from all buttons and contents
-                tabBtns.forEach(b => b.classList.remove('active'));
-                tabContents.forEach(c => c.classList.remove('active'));
-                
-                // Add active class to clicked button
-                btn.classList.add('active');
-                
-                // Show corresponding tab content
-                const tabId = btn.getAttribute('data-tab');
-                document.getElementById(`${tabId}-tab`).classList.add('active');
-            });
-        });
-        
-        // Testimonial slider
-        const testimonialSlides = document.getElementById('testimonialSlides');
-        const sliderBtns = document.querySelectorAll('.slider-btn');
-        let currentSlide = 0;
-        
-        function showSlide(index) {
-            // Update slide position
-            testimonialSlides.style.transform = `translateX(-${index * 100}%)`;
-            
-            // Update active button
-            sliderBtns.forEach(btn => btn.classList.remove('active'));
-            sliderBtns[index].classList.add('active');
-            
-            currentSlide = index;
+        // If it wasn't open, open it
+        if (!isOpen) {
+            answer.classList.add('open');
+            question.classList.add('active');
         }
+    });
+});
+
+// Pricing Tabs
+const pricingTabs = document.querySelectorAll('.pricing-tab');
+const monthlyPrices = document.querySelectorAll('.monthly-price');
+const annualPrices = document.querySelectorAll('.annual-price');
+
+pricingTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+        // Remove active class from all tabs
+        pricingTabs.forEach(t => t.classList.remove('active'));
         
-        // Add click events to slider buttons
-        sliderBtns.forEach((btn, index) => {
-            btn.addEventListener('click', () => {
-                showSlide(index);
-            });
-        });
+        // Add active class to clicked tab
+        tab.classList.add('active');
         
-        // Auto-slide testimonials
-        setInterval(() => {
-            let nextSlide = currentSlide < sliderBtns.length - 1 ? currentSlide + 1 : 0;
-            showSlide(nextSlide);
-        }, 5000);
+        // Show/hide prices based on selected tab
+        const plan = tab.getAttribute('data-plan');
         
-        // FAQ accordion
-        const faqItems = document.querySelectorAll('.faq-item');
-        
-        faqItems.forEach(item => {
-            const question = item.querySelector('.faq-question');
-            const answer = item.querySelector('.faq-answer');
-            const toggle = item.querySelector('.faq-toggle');
-            
-            question.addEventListener('click', () => {
-                // Close all other FAQ items
-                faqItems.forEach(otherItem => {
-                    if (otherItem !== item) {
-                        otherItem.classList.remove('active');
-                        otherItem.querySelector('.faq-answer').classList.remove('active');
-                    }
-                });
-                
-                // Toggle current item
-                item.classList.toggle('active');
-                answer.classList.toggle('active');
-                toggle.textContent = item.classList.contains('active') ? '−' : '+';
-            });
-        });
-        
-        // Animated counters
-        const counters = document.querySelectorAll('.counter');
-        
-        function animateCounter(counter) {
-            const target = parseInt(counter.getAttribute('data-target'));
-            const increment = target / 100;
-            let current = 0;
-            
-            const timer = setInterval(() => {
-                current += increment;
-                if (current >= target) {
-                    counter.textContent = target + (counter.getAttribute('data-target') === '99' ? '%' : '+');
-                    clearInterval(timer);
-                } else {
-                    counter.textContent = Math.floor(current) + (counter.getAttribute('data-target') === '99' ? '%' : '+');
-                }
-            }, 20);
+        if (plan === 'monthly') {
+            monthlyPrices.forEach(price => price.style.display = 'block');
+            annualPrices.forEach(price => price.style.display = 'none');
+        } else {
+            monthlyPrices.forEach(price => price.style.display = 'none');
+            annualPrices.forEach(price => price.style.display = 'block');
         }
+    });
+});
+
+// Smooth scrolling for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
         
-        // Start counters when they come into view
-        const observerOptions = {
-            threshold: 0.5
-        };
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
         
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const counter = entry.target;
-                    animateCounter(counter);
-                    observer.unobserve(counter);
-                }
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+            window.scrollTo({
+                top: targetElement.offsetTop - 80,
+                behavior: 'smooth'
             });
-        }, observerOptions);
-        
-        counters.forEach(counter => {
-            observer.observe(counter);
+        }
+    });
+});
+
+// About Section - Animated Statistics Counter
+function animateCounter(element, target, duration) {
+    let start = 0;
+    const increment = target / (duration / 16); // 60fps
+    const timer = setInterval(() => {
+        start += increment;
+        if (start >= target) {
+            element.textContent = target + (element.getAttribute('data-count') === '99' ? '%' : '+');
+            clearInterval(timer);
+        } else {
+            element.textContent = Math.floor(start) + (element.getAttribute('data-count') === '99' ? '%' : '+');
+        }
+    }, 16);
+}
+
+// Initialize counters when About section is in view
+const aboutSection = document.getElementById('about');
+const statNumbers = document.querySelectorAll('.stat-number');
+let countersAnimated = false;
+
+function checkAboutSectionInView() {
+    const rect = aboutSection.getBoundingClientRect();
+    const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+    
+    // If About section is in view and counters haven't been animated yet
+    if (rect.top <= windowHeight * 0.75 && rect.bottom >= 0 && !countersAnimated) {
+        statNumbers.forEach(stat => {
+            const target = parseInt(stat.getAttribute('data-count'));
+            animateCounter(stat, target, 1500);
         });
-        
-        // Demo modal
-        const demoBtn = document.getElementById('demoBtn');
-        const demoModal = document.getElementById('demoModal');
-        const closeModal = document.getElementById('closeModal');
-        const liveChatBtn = document.getElementById('liveChatBtn');
-        
-        demoBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            demoModal.classList.add('active');
-        });
-        
-        closeModal.addEventListener('click', () => {
-            demoModal.classList.remove('active');
-        });
-        
-        // Close modal when clicking outside
-        demoModal.addEventListener('click', (e) => {
-            if (e.target === demoModal) {
-                demoModal.classList.remove('active');
-            }
-        });
-        
-        // Live chat button
-        liveChatBtn.addEventListener('click', () => {
-            alert("Live chat support is coming soon! In the meantime, please email us at support@pulsecraft.com or call +1 (555) 123-4567.");
-        });
-        
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                if(this.getAttribute('href') === '#') return;
-                
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if(targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-        
-        // Sticky header on scroll
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
-            } else {
-                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
-            }
-        });
+        countersAnimated = true;
+    }
+}
+
+// Initialize the page with first testimonial visible
+document.addEventListener('DOMContentLoaded', () => {
+    showSlide(0);
+    
+    // Add scroll listener for About section animations
+    window.addEventListener('scroll', checkAboutSectionInView);
+    
+    // Check on initial load
+    checkAboutSectionInView();
+});
