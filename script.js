@@ -152,6 +152,51 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+// Animated Counter for Metrics
+function animateCounter(element, start, end, duration) {
+    let startTimestamp = null;
+    const step = (timestamp) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        const value = Math.floor(progress * (end - start) + start);
+        
+        if (element.textContent.includes('%')) {
+            element.textContent = value + '%';
+        } else if (element.textContent.includes('+')) {
+            element.textContent = value + '+';
+        } else {
+            element.textContent = value;
+        }
+        
+        if (progress < 1) {
+            window.requestAnimationFrame(step);
+        }
+    };
+    window.requestAnimationFrame(step);
+}
+
+// Observe metrics section for animation
+const metricsSection = document.getElementById('metrics');
+const metricValues = document.querySelectorAll('.metric-value');
+
+let metricsAnimated = false;
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting && !metricsAnimated) {
+            metricValues.forEach(valueElement => {
+                const target = parseInt(valueElement.getAttribute('data-target'));
+                animateCounter(valueElement, 0, target, 2000);
+            });
+            metricsAnimated = true;
+        }
+    });
+}, { threshold: 0.5 });
+
+if (metricsSection) {
+    observer.observe(metricsSection);
+}
+
 // Contact Form Modal
 function openContactModal(title = "Schedule a Consultation") {
     const modalHTML = `
