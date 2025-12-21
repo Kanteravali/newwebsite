@@ -1433,9 +1433,11 @@ nav ul li a:hover::after {
     }
 }
 
-@media (max-width: 576px) {
+@media (max-width: 406px) {
     .newsletter-form {
         flex-direction: column;
+        color: red;
+        
     }
     
     .newsletter-input {
@@ -1445,6 +1447,7 @@ nav ul li a:hover::after {
     .footer-links {
         justify-content: flex-start;
     }
+  
 }
 
 /* Responsive */
@@ -1503,6 +1506,14 @@ nav ul li a:hover::after {
     .mobile-menu-btn {
         display: block;
     }
+    .menu-line {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: var(--dark);
+    margin: 5px 0;
+}
+
     
     nav ul {
         position: fixed;
