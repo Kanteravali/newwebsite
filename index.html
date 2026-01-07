@@ -3,46 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pulsecraft Worksuite | Integrated Cryptocurrency & Cloud Solutions</title>
+    <title>Pulsecrafts Worksuite | Integrated Cryptocurrency & Cloud Solutions</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Header -->
-   <header id="header">
-    <div class="container header-container">
-        <div class="logo-container">
-            <a href="#home" class="logo">
-                <!-- Option 1: Image logo -->
-                <img src="assests/image.png" alt="Pulsecraft Logo" class="logo-image">
-                <!-- Option 2: Text logo (fallback if no image) -->
-                <span class="logo-text">
-                    <span class="logo-text-primary">Pulse</span><span class="logo-text-secondary">craft</span>
-                </span>
-            </a>
+    <header id="header">
+        <div class="container header-container">
+            <div class="logo-container">
+                <a href="#home" class="logo">
+                    <img src="assests/image.png" alt="Pulsecraft Logo" class="logo-image">
+                    <span class="logo-text">
+                        <span class="logo-text-primary">Pulse</span><span class="logo-text-secondary">crafts</span>
+                    </span>
+                </a>
+            </div>
+            
+            <nav class="nav-menu">
+                <ul class="nav-list" id="navMenu">
+                    <li class="nav-item"><a href="#home" class="nav-link active">Home</a></li>
+                    <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="#services" class="nav-link">Services</a></li>
+                    <li class="nav-item"><a href="#metrics" class="nav-link">Metrics</a></li>
+                    <li class="nav-item"><a href="#features" class="nav-link">Features</a></li>
+                    <li class="nav-item"><a href="#testimonials" class="nav-link">Testimonials</a></li>
+                    <li class="nav-item"><a href="#pricing" class="nav-link">Pricing</a></li>
+                    <li class="nav-item"><a href="#contact" class="btn btn-primary btn-small">Contact Us</a></li>
+                </ul>
+            </nav>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+                <span class="menu-line"></span>
+                <span class="menu-line"></span>
+                <span class="menu-line"></span>
+            </button>
         </div>
-        
-        <nav class="nav-menu">
-            <ul class="nav-list" id="navMenu">
-                <li class="nav-item"><a href="#home" class="nav-link active">Home</a></li>
-                <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
-                <li class="nav-item"><a href="#services" class="nav-link">Services</a></li>
-                <li class="nav-item"><a href="#metrics" class="nav-link">Metrics</a></li>
-                <li class="nav-item"><a href="#features" class="nav-link">Features</a></li>
-                <li class="nav-item"><a href="#testimonials" class="nav-link">Testimonials</a></li>
-                <li class="nav-item"><a href="#pricing" class="nav-link">Pricing</a></li>
-                <li class="nav-item"><a href="#contact" class="btn btn-primary btn-small">Contact Us</a></li>
-            </ul>
-        </nav>
-        
-        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
-            <span class="menu-line"></span>
-            <span class="menu-line"></span>
-            <span class="menu-line"></span>
-        </button>
-    </div>
-</header>
+    </header>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
@@ -73,7 +71,7 @@
     <section class="section" id="about">
         <div class="container">
             <div class="section-title">
-                <h2>About Pulsecraft Worksuite</h2>
+                <h2>About Pulsecrafts Worksuite</h2>
                 <p>Discover how we're revolutionizing the way businesses leverage technology for growth and efficiency.</p>
             </div>
             
@@ -510,6 +508,7 @@
                     <div class="pricing-header">
                         <h3 class="pricing-name">Starter</h3>
                         <div class="pricing-price monthly-price">₹223</div>
+                        <div class="pricing-price monthly-price">$5</div>
                         <div class="pricing-price annual-price" style="display: none;">₹178</div>
                         <div class="pricing-period">per user/month</div>
                     </div>
@@ -534,6 +533,7 @@
                         <div class="popular-badge">MOST POPULAR</div>
                         <h3 class="pricing-name">Standard</h3>
                         <div class="pricing-price monthly-price">₹446</div>
+                        <div class="pricing-price monthly-price">$10</div>
                         <div class="pricing-price annual-price" style="display: none;">₹357</div>
                         <div class="pricing-period">per user/month</div>
                     </div>
@@ -557,6 +557,7 @@
                     <div class="pricing-header">
                         <h3 class="pricing-name">Enterprise</h3>
                         <div class="pricing-price monthly-price">₹1516</div>
+                       <!---- <div class="pricing-price monthly-price">$5</div>-->
                         <div class="pricing-price annual-price" style="display: none;">₹1213</div>
                         <div class="pricing-period">per user/month</div>
                     </div>
@@ -651,85 +652,81 @@
     </section>
 
     <!-- Footer -->
-<footer class="footer">
-    <div class="footer-top">
-        <div class="newsletter">
-            <h3 >Stay Updated</h3>
-            <p>Subscribe to our newsletter for the latest updates on features and releases.</p>
-            <form class="newsletter-form">
-                <input type="email" class="newsletter-input" placeholder="Enter your email" required>
-                <button type="submit" class="newsletter-btn">Subscribe</button>
-            </form>
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="newsletter">
+                <h3>Stay Updated</h3>
+                <p>Subscribe to our newsletter for the latest updates on features and releases.</p>
+                <form class="newsletter-form">
+                    <input type="email" class="newsletter-input" placeholder="Enter your email" required>
+                    <button type="submit" class="newsletter-btn">Subscribe</button>
+                </form>
+            </div>
+            
+            <div class="footer-links">
+                <div class="link-column">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">Pulsecrafts Worksuite</a></li>
+                        <li><a href="#">Cryptocurrency Services</a></li>
+                        <li><a href="#">Cloud Services</a></li>
+                        <li><a href="#">Custom Solutions</a></li>
+                        <li><a href="#">Enterprise Solutions</a></li>
+                    </ul>
+                </div>
+                
+                <div class="link-column">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Newsroom</a></li>
+                    </ul>
+                </div>
+                
+                <div class="link-column">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">API Reference</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Webinars</a></li>
+                        <li><a href="#">Community</a></li>
+                    </ul>
+                </div>
+                
+                <div class="link-column">
+                    <h4>Other</h4>
+                    <ul>
+                        <li><a href="#">Pricing Plans</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
         
-        <div class="footer-links">
-            <div class="link-column">
-                <h4>Services</h4>
-                <ul>
-                    <li><a href="#">Pulsecraft Worksuite</a></li>
-                    <li><a href="#">Cryptocurrency Services</a></li>
-                    <li><a href="#">Cloud Services</a></li>
-                    <li><a href="#">Custom Solutions</a></li>
-                    <li><a href="#">Enterprise Solutions</a></li>
-                </ul>
-            </div>
-            
-            <div class="link-column">
-                <h4>Company</h4>
-                <ul>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Careers</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#">Newsroom</a></li>
-                </ul>
-            </div>
-            
-            <div class="link-column">
-                <h4>Resources</h4>
-                <ul>
-                    <li><a href="#">Help Center</a></li>
-                    <li><a href="#">Documentation</a></li>
-                    <li><a href="#">API Reference</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Webinars</a></li>
-                    <li><a href="#">Community</a></li>
-                </ul>
-            </div>
-            
-            <div class="link-column">
-                <h4>Other</h4>
-                <ul>
-                    <li><a href="#">Pricing Plans</a></li>
-                    <li><a href="#">FAQ</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    
-    <div class="footer-divider"></div>
-    
-    
+        <div class="footer-divider"></div>
         
         <div class="footer-info">
             <div class="social-icons">
-                
                 <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                 <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
                 <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
             </div>
             
             <div class="legal-links">
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Service</a>
-                <a href="#">Cookie Policy</a>
+                <a href="#" onclick="openPrivacyPolicy(); return false;">Privacy Policy</a>
+                <a href="#" onclick="openTermsOfService(); return false;">Terms of Service</a>
+                <a href="#" onclick="openCookiePolicy(); return false;">Cookie Policy</a>
             </div>
             
             <div class="copyright">
-                © 2025 Pulsecraft. All rights reserved.
+                © 2025 Pulsecrafts. All rights reserved.
             </div>
         </div>
-    </div>
-</footer>
+    </footer>
 
     <script src="script.js"></script>
 </body>

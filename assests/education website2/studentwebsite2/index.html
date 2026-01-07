@@ -1,0 +1,1422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyGurukul by Pulsecrafts - Online Training & Placement Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@400;600&display=swap">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #0ea5e9;
+            --accent: #f59e0b;
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --gray: #64748b;
+            --gray-light: #e2e8f0;
+            --success: #10b981;
+            --danger: #ef4444;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            background-color: var(--light);
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.75rem;
+            border-radius: 0.375rem;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background-color: #0284c7;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header p {
+            color: var(--gray);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.75rem;
+            color: var(--primary);
+        }
+
+        .logo i {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--dark);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-text p {
+            font-size: 1.25rem;
+            color: var(--gray);
+            margin-bottom: 2rem;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .hero-image img {
+            width: 100%;
+            border-radius: 1rem;
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Highlights Section */
+        .highlights {
+            padding: 5rem 0;
+            background-color: white;
+        }
+
+        .highlight-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .highlight-card {
+            background-color: white;
+            border-radius: 0.75rem;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .highlight-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .highlight-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        /* Courses Section */
+        .courses {
+            padding: 5rem 0;
+            background-color: #f8fafc;
+        }
+
+        .course-filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1.5rem;
+            background-color: white;
+            border: 1px solid var(--gray-light);
+            border-radius: 2rem;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .course-card {
+            background-color: white;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .course-card-header {
+            padding: 1.5rem;
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .course-card-header h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+
+        .course-card-body {
+            padding: 1.5rem;
+        }
+
+        .course-duration {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .duration-badge {
+            padding: 0.25rem 0.75rem;
+            background-color: var(--gray-light);
+            border-radius: 1rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .course-card-footer {
+            padding: 0 1.5rem 1.5rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Learning Model */
+        .learning-model {
+            padding: 5rem 0;
+            background-color: white;
+        }
+
+        .model-steps {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 3rem;
+            position: relative;
+        }
+
+        .model-step {
+            text-align: center;
+            width: 180px;
+            position: relative;
+        }
+
+        .model-step-number {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 1rem;
+        }
+
+        .model-step h4 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .model-arrow {
+            font-size: 2rem;
+            color: var(--gray-light);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: #cbd5e1;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 0.5rem;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #334155;
+            color: #94a3b8;
+            font-size: 0.875rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-btns {
+                justify-content: center;
+            }
+
+            .model-arrow {
+                display: none;
+            }
+
+            .model-steps {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                padding: 1.5rem;
+                box-shadow: var(--shadow);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .course-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Course Detail Page */
+        .course-detail {
+            padding: 3rem 0;
+        }
+
+        .course-hero {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            padding: 3rem;
+            border-radius: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .duration-options {
+            display: flex;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .duration-option {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .duration-option.active {
+            background-color: white;
+            color: var(--primary);
+        }
+
+        .curriculum-section {
+            margin-bottom: 2rem;
+        }
+
+        .curriculum-item {
+            background-color: white;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+        }
+
+        .curriculum-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .curriculum-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .curriculum-item.active .curriculum-content {
+            max-height: 500px;
+        }
+
+        /* Form Styles */
+        .form-container {
+            background-color: white;
+            border-radius: 0.75rem;
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--gray-light);
+            border-radius: 0.375rem;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        /* Placement Timeline */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 3rem auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--primary);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-content {
+            padding: 20px;
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .timeline-item:nth-child(odd)::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background-color: white;
+            border: 4px solid var(--primary);
+            top: 20px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .timeline-item:nth-child(even)::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            left: -10px;
+            background-color: white;
+            border: 4px solid var(--primary);
+            top: 20px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            border-radius: 0.75rem;
+            padding: 2.5rem;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gray);
+        }
+
+        /* Login Dashboard */
+        .dashboard-container {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            min-height: 80vh;
+            margin: 2rem auto;
+            background-color: white;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .dashboard-sidebar {
+            background-color: var(--dark);
+            color: white;
+            padding: 2rem 1rem;
+        }
+
+        .dashboard-sidebar h3 {
+            color: white;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #334155;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 0.5rem;
+        }
+
+        .sidebar-menu a {
+            display: block;
+            padding: 0.75rem 1rem;
+            border-radius: 0.375rem;
+            color: #cbd5e1;
+            transition: var(--transition);
+        }
+
+        .sidebar-menu a:hover, .sidebar-menu a.active {
+            background-color: #334155;
+            color: white;
+        }
+
+        .dashboard-content {
+            padding: 2rem;
+        }
+
+        .dashboard-card {
+            background-color: #f8fafc;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>MyGurukul</span>
+                </a>
+                
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#courses">Courses</a></li>
+                    <li><a href="#program-structure">Program Structure</a></li>
+                    <li><a href="#placement">Placement</a></li>
+                    <li><a href="#for-students">For Students</a></li>
+                    <li><a href="#for-counsellors">For Counsellors</a></li>
+                    <li><a href="#enquiry" class="btn btn-primary">Enquire Now</a></li>
+                </ul>
+                
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Launch Your Career with Industry-Focused Training</h1>
+                    <p>Get trained, certified, and placed with our comprehensive online programs designed for today's job market.</p>
+                    <div class="hero-btns">
+                        <a href="#courses" class="btn btn-primary">Explore Courses</a>
+                        <a href="#enquiry" class="btn btn-secondary">Free Demo Session</a>
+                        <a href="#enquiry" class="btn btn-outline">Enroll Now</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Online Learning">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Highlights Section -->
+    <section class="highlights">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Choose MyGurukul?</h2>
+                <p>We provide a comprehensive learning ecosystem to ensure your success</p>
+            </div>
+            
+            <div class="highlight-cards">
+                <div class="highlight-card">
+                    <i class="fas fa-video"></i>
+                    <h3>Live Interactive Classes</h3>
+                    <p>Real-time sessions with industry experts and mentors</p>
+                </div>
+                <div class="highlight-card">
+                    <i class="fas fa-tasks"></i>
+                    <h3>Assignments & Projects</h3>
+                    <p>Hands-on practice with real-world projects</p>
+                </div>
+                <div class="highlight-card">
+                    <i class="fas fa-certificate"></i>
+                    <h3>Industry Certification</h3>
+                    <p>Get certified upon successful completion</p>
+                </div>
+                <div class="highlight-card">
+                    <i class="fas fa-briefcase"></i>
+                    <h3>Placement Support</h3>
+                    <p>Dedicated placement assistance for qualified candidates</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section class="courses" id="courses">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Career-Oriented Courses</h2>
+                <p>Choose from our wide range of technical and non-technical programs</p>
+            </div>
+            
+            <div class="course-filters">
+                <button class="filter-btn active" data-filter="all">All Courses</button>
+                <button class="filter-btn" data-filter="technical">Technical</button>
+                <button class="filter-btn" data-filter="non-technical">Non-Technical</button>
+                <button class="filter-btn" data-filter="1-month">1 Month</button>
+                <button class="filter-btn" data-filter="3-month">3 Months</button>
+                <button class="filter-btn" data-filter="6-month">6 Months</button>
+            </div>
+            
+            <div class="course-grid" id="course-container">
+                <!-- Courses will be dynamically loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Learning Model Section -->
+    <section class="learning-model">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Learning Model</h2>
+                <p>A structured approach from learning to placement</p>
+            </div>
+            
+            <div class="model-steps">
+                <div class="model-step">
+                    <div class="model-step-number">1</div>
+                    <h4>Learn</h4>
+                    <p>Interactive live sessions with industry experts</p>
+                </div>
+                
+                <div class="model-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                
+                <div class="model-step">
+                    <div class="model-step-number">2</div>
+                    <h4>Build</h4>
+                    <p>Hands-on projects to apply your knowledge</p>
+                </div>
+                
+                <div class="model-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                
+                <div class="model-step">
+                    <div class="model-step-number">3</div>
+                    <h4>Evaluate</h4>
+                    <p>Regular assessments and skill tests</p>
+                </div>
+                
+                <div class="model-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                
+                <div class="model-step">
+                    <div class="model-step-number">4</div>
+                    <h4>Place</h4>
+                    <p>Placement assistance for qualified candidates</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Program Structure Section -->
+    <section class="program-structure" id="program-structure">
+        <div class="container">
+            <div class="section-header">
+                <h2>Program Structure</h2>
+                <p>Our 6-month comprehensive learning journey</p>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Month 1: Foundation</h3>
+                        <p>Build strong fundamentals and core concepts of the chosen domain.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Month 2-3: Core Skills</h3>
+                        <p>Deep dive into essential skills and technologies with hands-on practice.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Month 4-5: Advanced Skills</h3>
+                        <p>Master advanced concepts and work on real-world projects.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Month 6: Evaluation + Placement Prep</h3>
+                        <p>Final assessments, resume building, interview preparation, and placement process.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>MyGurukul</h3>
+                    <p>An online training & placement platform by Pulsecrafts offering career-oriented courses with placement support.</p>
+                    <div style="margin-top: 1.5rem;">
+                        <a href="#" class="btn btn-primary">Get Started</a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#courses">Courses</a></li>
+                        <li><a href="#program-structure">Program Structure</a></li>
+                        <li><a href="#placement">Placement Support</a></li>
+                        <li><a href="#for-students">For Students</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-envelope"></i> enquiries@mygurukul.co</li>
+                        <li><i class="fas fa-phone"></i> +91 9876543210</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Bangalore, India</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 MyGurukul by Pulsecrafts. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Enquiry Modal -->
+    <div class="modal" id="enquiryModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Enquiry Form</h2>
+            <form id="enquiryForm">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="course">Course Interested In</label>
+                    <select id="course" name="course" required>
+                        <option value="">Select a course</option>
+                        <option value="full-stack-web-development">Full Stack Web Development</option>
+                        <option value="data-science">Data Science & Analytics</option>
+                        <option value="digital-marketing">Digital Marketing</option>
+                        <option value="ui-ux-design">UI/UX Design</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="duration">Preferred Duration</label>
+                    <select id="duration" name="duration" required>
+                        <option value="">Select duration</option>
+                        <option value="1-month">1 Month - Foundation</option>
+                        <option value="3-month">3 Months - Core</option>
+                        <option value="6-month">6 Months - Complete Program</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Additional Information</label>
+                    <textarea id="message" name="message" rows="4"></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Enquiry</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Course Detail Modal -->
+    <div class="modal" id="courseDetailModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="courseDetailContent">
+                <!-- Course details will be loaded here dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sample course data - In production, this would come from a CMS/API
+        const courses = [
+            {
+                id: 1,
+                name: "Full Stack Web Development",
+                category: "technical",
+                description: "Learn to build complete web applications from frontend to backend",
+                durations: ["1-month", "3-month", "6-month"],
+                mode: "Live Online",
+                curriculum: [
+                    { title: "HTML, CSS & JavaScript", content: "Fundamentals of web development" },
+                    { title: "React.js", content: "Building modern user interfaces" },
+                    { title: "Node.js & Express", content: "Server-side development" },
+                    { title: "Database Management", content: "MongoDB and SQL databases" },
+                    { title: "Deployment & DevOps", content: "Deploying applications to production" }
+                ],
+                projects: "Build 3 full-stack applications including an e-commerce platform",
+                certification: "MyGurukul Full Stack Developer Certificate",
+                placementCriteria: "Minimum 80% attendance, completion of all projects, passing final assessment"
+            },
+            {
+                id: 2,
+                name: "Data Science & Analytics",
+                category: "technical",
+                description: "Master data analysis, visualization, and machine learning",
+                durations: ["1-month", "3-month", "6-month"],
+                mode: "Live Online",
+                curriculum: [
+                    { title: "Python for Data Science", content: "Python programming and libraries" },
+                    { title: "Data Analysis with Pandas", content: "Data manipulation and cleaning" },
+                    { title: "Data Visualization", content: "Creating insights with Matplotlib and Seaborn" },
+                    { title: "Machine Learning Basics", content: "Supervised and unsupervised learning" },
+                    { title: "SQL for Data Science", content: "Database queries for analysis" }
+                ],
+                projects: "Complete 2 data analysis projects and 1 machine learning model",
+                certification: "MyGurukul Data Science Certificate",
+                placementCriteria: "Minimum 80% attendance, project completion, passing all assessments"
+            },
+            {
+                id: 3,
+                name: "Digital Marketing",
+                category: "non-technical",
+                description: "Learn to create and execute effective digital marketing campaigns",
+                durations: ["1-month", "3-month", "6-month"],
+                mode: "Live Online",
+                curriculum: [
+                    { title: "SEO Fundamentals", content: "Search engine optimization basics" },
+                    { title: "Social Media Marketing", content: "Campaigns on Facebook, Instagram, LinkedIn" },
+                    { title: "Google Ads", content: "Creating and optimizing PPC campaigns" },
+                    { title: "Content Marketing", content: "Creating engaging content strategies" },
+                    { title: "Analytics & Reporting", content: "Measuring campaign performance" }
+                ],
+                projects: "Create a complete digital marketing strategy for a real business",
+                certification: "MyGurukul Digital Marketing Certificate",
+                placementCriteria: "Minimum 80% attendance, completion of marketing plan, passing final exam"
+            },
+            {
+                id: 4,
+                name: "UI/UX Design",
+                category: "technical",
+                description: "Design intuitive and beautiful user interfaces and experiences",
+                durations: ["3-month", "6-month"],
+                mode: "Live Online",
+                curriculum: [
+                    { title: "Design Principles", content: "Fundamentals of good design" },
+                    { title: "Figma & Adobe XD", content: "Industry-standard design tools" },
+                    { title: "User Research", content: "Understanding user needs and behaviors" },
+                    { title: "Wireframing & Prototyping", content: "Creating interactive prototypes" },
+                    { title: "Design Systems", content: "Creating consistent design languages" }
+                ],
+                projects: "Design a complete mobile app from research to final prototype",
+                certification: "MyGurukul UI/UX Design Certificate",
+                placementCriteria: "Minimum 80% attendance, portfolio of 3 projects, passing design review"
+            }
+        ];
+
+        // DOM Elements
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        const courseContainer = document.getElementById('course-container');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const enquiryModal = document.getElementById('enquiryModal');
+        const courseDetailModal = document.getElementById('courseDetailModal');
+        const closeModalBtns = document.querySelectorAll('.close-modal');
+        const enquiryForm = document.getElementById('enquiryForm');
+
+        // Initialize the website
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load courses
+            renderCourses(courses);
+            
+            // Set up event listeners
+            setupEventListeners();
+            
+            // Check if we need to show a specific section from URL hash
+            handleHashNavigation();
+        });
+
+        // Render courses to the page
+        function renderCourses(courseList) {
+            courseContainer.innerHTML = '';
+            
+            courseList.forEach(course => {
+                const courseCard = document.createElement('div');
+                courseCard.className = 'course-card';
+                courseCard.dataset.category = course.category;
+                courseCard.dataset.durations = course.durations.join(',');
+                
+                // Create duration badges
+                const durationBadges = course.durations.map(dur => {
+                    let displayText = '';
+                    switch(dur) {
+                        case '1-month': displayText = '1 Month'; break;
+                        case '3-month': displayText = '3 Months'; break;
+                        case '6-month': displayText = '6 Months'; break;
+                    }
+                    return `<span class="duration-badge">${displayText}</span>`;
+                }).join('');
+                
+                courseCard.innerHTML = `
+                    <div class="course-card-header">
+                        <h3>${course.name}</h3>
+                        <p>${course.mode}</p>
+                    </div>
+                    <div class="course-card-body">
+                        <p>${course.description}</p>
+                        <div class="course-duration">
+                            ${durationBadges}
+                        </div>
+                    </div>
+                    <div class="course-card-footer">
+                        <a href="#" class="btn btn-outline view-details-btn" data-course-id="${course.id}">View Details</a>
+                        <a href="#enquiry" class="btn btn-primary enquiry-btn" data-course-name="${course.name}">Enquire Now</a>
+                    </div>
+                `;
+                
+                courseContainer.appendChild(courseCard);
+            });
+            
+            // Add event listeners to the newly created buttons
+            document.querySelectorAll('.view-details-btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const courseId = parseInt(this.dataset.courseId);
+                    showCourseDetail(courseId);
+                });
+            });
+            
+            document.querySelectorAll('.enquiry-btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const courseName = this.dataset.courseName;
+                    showEnquiryModal(courseName);
+                });
+            });
+        }
+
+        // Show course detail in modal
+        function showCourseDetail(courseId) {
+            const course = courses.find(c => c.id === courseId);
+            if (!course) return;
+            
+            // Create curriculum items
+            const curriculumItems = course.curriculum.map(item => `
+                <div class="curriculum-item">
+                    <div class="curriculum-header">
+                        <h4>${item.title}</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="curriculum-content">
+                        <p>${item.content}</p>
+                    </div>
+                </div>
+            `).join('');
+            
+            document.getElementById('courseDetailContent').innerHTML = `
+                <div class="course-hero">
+                    <h2>${course.name}</h2>
+                    <p>${course.description}</p>
+                    <div class="duration-options">
+                        ${course.durations.includes('1-month') ? '<div class="duration-option active">1 Month - Foundation</div>' : ''}
+                        ${course.durations.includes('3-month') ? '<div class="duration-option">3 Months - Core</div>' : ''}
+                        ${course.durations.includes('6-month') ? '<div class="duration-option">6 Months - Complete Program</div>' : ''}
+                    </div>
+                </div>
+                
+                <div class="curriculum-section">
+                    <h3>Curriculum</h3>
+                    ${curriculumItems}
+                </div>
+                
+                <div class="dashboard-card">
+                    <h3>Projects & Outcomes</h3>
+                    <p>${course.projects}</p>
+                </div>
+                
+                <div class="dashboard-card">
+                    <h3>Certification</h3>
+                    <p>${course.certification}</p>
+                </div>
+                
+                <div class="dashboard-card">
+                    <h3>Placement Eligibility Criteria</h3>
+                    <p>${course.placementCriteria}</p>
+                    <p class="text-small" style="font-size: 0.875rem; color: var(--gray); margin-top: 0.5rem;">
+                        <i class="fas fa-exclamation-circle"></i> Placement assistance is provided only to qualified candidates
+                    </p>
+                </div>
+                
+                <div style="margin-top: 2rem;">
+                    <a href="#enquiry" class="btn btn-primary" style="width: 100%;" data-course-name="${course.name}" id="enquireFromDetailBtn">Enquire About This Course</a>
+                </div>
+            `;
+            
+            // Add event listeners for curriculum accordion
+            document.querySelectorAll('.curriculum-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    const icon = this.querySelector('.fa-chevron-down');
+                    icon.classList.toggle('fa-chevron-down');
+                    icon.classList.toggle('fa-chevron-up');
+                });
+            });
+            
+            // Add event listener for duration options
+            document.querySelectorAll('.duration-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    document.querySelectorAll('.duration-option').forEach(opt => opt.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            
+            // Add event listener for enquiry button in detail modal
+            document.getElementById('enquireFromDetailBtn').addEventListener('click', function(e) {
+                e.preventDefault();
+                const courseName = this.dataset.courseName;
+                courseDetailModal.style.display = 'none';
+                showEnquiryModal(courseName);
+            });
+            
+            courseDetailModal.style.display = 'flex';
+        }
+
+        // Show enquiry modal
+        function showEnquiryModal(courseName = '') {
+            if (courseName) {
+                document.getElementById('course').value = courseName.toLowerCase().replace(/\s+/g, '-');
+            }
+            enquiryModal.style.display = 'flex';
+        }
+
+        // Filter courses
+        function filterCourses(filter) {
+            if (filter === 'all') {
+                renderCourses(courses);
+                return;
+            }
+            
+            const filteredCourses = courses.filter(course => {
+                if (filter === 'technical' || filter === 'non-technical') {
+                    return course.category === filter;
+                } else {
+                    return course.durations.includes(filter);
+                }
+            });
+            
+            renderCourses(filteredCourses);
+        }
+
+        // Set up event listeners
+        function setupEventListeners() {
+            // Mobile menu toggle
+            mobileMenuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!navLinks.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                    navLinks.classList.remove('active');
+                }
+            });
+
+            // Course filter buttons
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    filterCourses(this.dataset.filter);
+                });
+            });
+
+            // Nav links smooth scroll
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    if (targetId === '#enquiry') {
+                        e.preventDefault();
+                        showEnquiryModal();
+                        return;
+                    }
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        e.preventDefault();
+                        navLinks.classList.remove('active');
+                        
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Close modals
+            closeModalBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    enquiryModal.style.display = 'none';
+                    courseDetailModal.style.display = 'none';
+                });
+            });
+
+            // Close modal when clicking outside
+            window.addEventListener('click', (e) => {
+                if (e.target === enquiryModal) {
+                    enquiryModal.style.display = 'none';
+                }
+                if (e.target === courseDetailModal) {
+                    courseDetailModal.style.display = 'none';
+                }
+            });
+
+            // Enquiry form submission
+            enquiryForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form data
+                const formData = {
+                    name: document.getElementById('name').value,
+                    email: document.getElementById('email').value,
+                    phone: document.getElementById('phone').value,
+                    course: document.getElementById('course').value,
+                    duration: document.getElementById('duration').value,
+                    message: document.getElementById('message').value,
+                    date: new Date().toISOString()
+                };
+                
+                // In a real application, you would send this data to a server
+                console.log('Enquiry submitted:', formData);
+                
+                // Show success message
+                alert('Thank you for your enquiry! We will contact you within 24 hours.');
+                
+                // Close modal and reset form
+                enquiryModal.style.display = 'none';
+                enquiryForm.reset();
+            });
+        }
+
+        // Handle hash navigation
+        function handleHashNavigation() {
+            const hash = window.location.hash;
+            if (!hash) return;
+            
+            // If hash is #enquiry, show enquiry modal
+            if (hash === '#enquiry') {
+                showEnquiryModal();
+                return;
+            }
+            
+            // Otherwise, scroll to section
+            const targetElement = document.querySelector(hash);
+            if (targetElement) {
+                setTimeout(() => {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }, 100);
+            }
+        }
+    </script>
+</body>
+</html>
