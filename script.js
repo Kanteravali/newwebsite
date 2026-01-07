@@ -6,14 +6,14 @@ mobileMenuBtn.addEventListener('click', () => {
     navMenu.classList.toggle('active');
     mobileMenuBtn.innerHTML = navMenu.classList.contains('active') 
         ? '<i class="fas fa-times"></i>' 
-        : '<i class="fas fa-bars"></i>';
+        : '<span class="menu-line"></span><span class="menu-line"></span><span class="menu-line"></span>';
 });
 
 // Close mobile menu when clicking on a link
 document.querySelectorAll('#navMenu a').forEach(link => {
     link.addEventListener('click', () => {
         navMenu.classList.remove('active');
-        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+        mobileMenuBtn.innerHTML = '<span class="menu-line"></span><span class="menu-line"></span><span class="menu-line"></span>';
     });
 });
 
@@ -450,9 +450,116 @@ function openTermsOfService() {
     });
 }
 
-// Contact Modal function
-function openContactModal(title = "Schedule a Consultation") {
-    alert("Contact form would open here. You can reach us at contact@pulsecraft.com");
+// Contact Form Functionality
+function openContactForm(title = "Schedule a Consultation") {
+    const modalHTML = `
+        <div class="policy-modal-overlay" id="contactModal">
+            <div class="policy-modal-content">
+                <div class="policy-modal-header">
+                    <h3>${title}</h3>
+                    <button class="policy-modal-close">&times;</button>
+                </div>
+                <div class="policy-modal-body">
+                    <form id="contactForm" class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required placeholder="Enter your email address">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="company">Company Name</label>
+                            <input type="text" id="company" name="company" placeholder="Enter your company name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="plan">Interested Plan</label>
+                            <select id="plan" name="plan">
+                                <option value="">Select a plan</option>
+                                <option value="starter">Starter</option>
+                                <option value="standard">Standard</option>
+                                <option value="enterprise">Enterprise</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="service">Primary Interest</label>
+                            <select id="service" name="service">
+                                <option value="">Select service</option>
+                                <option value="worksuite">Worksuite</option>
+                                <option value="crypto">Cryptocurrency Services</option>
+                                <option value="cloud">Cloud Services</option>
+                                <option value="all">All Services</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" rows="5" required placeholder="Tell us about your requirements..."></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" required>
+                                I agree to receive communications from Pulsecrafts
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary submit-btn">Submit Request</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    document.body.insertAdjacentHTML('beforeend', modalHTML);
+    
+    const modal = document.getElementById('contactModal');
+    const closeBtn = modal.querySelector('.policy-modal-close');
+    const contactForm = modal.querySelector('#contactForm');
+    
+    closeBtn.addEventListener('click', () => modal.remove());
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) modal.remove();
+    });
+    
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        // Collect form data
+        const formData = {
+            name: document.getElementById('name').value,
+            email: document.getElementById('email').value,
+            phone: document.getElementById('phone').value,
+            company: document.getElementById('company').value,
+            plan: document.getElementById('plan').value,
+            service: document.getElementById('service').value,
+            message: document.getElementById('message').value,
+            timestamp: new Date().toISOString()
+        };
+        
+        // Here you would typically send the data to a server
+        // For now, we'll just show a success message
+        alert(`Thank you ${formData.name}! We have received your contact request. Our team will reach out to you at ${formData.email} within 24 hours.`);
+        
+        // Reset form and close modal
+        contactForm.reset();
+        modal.remove();
+    });
+}
+
+// "Get Started" button functionality for pricing cards
+function handlePricingButton(planName) {
+    openContactForm(`Get Started with ${planName} Plan`);
 }
 
 // Initialize page
@@ -460,7 +567,44 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize testimonial slider
     showSlide(0);
     
-    // Hero buttons
+    // Contact buttons - open contact form
+    document.querySelectorAll('.btn[href="#contact"], a[href="#contact"]').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            openContactForm();
+        });
+    });
+    
+    // CTA button in hero section
+    document.querySelector('.hero-btns .btn[href="#contact"]')?.addEventListener('click', (e) => {
+        e.preventDefault();
+        openContactForm("Get Started");
+    });
+    
+    // CTA button in CTA section
+    document.querySelector('.cta .btn')?.addEventListener('click', (e) => {
+        e.preventDefault();
+        openContactForm();
+    });
+    
+    // "Get In Touch" button in About section
+    document.querySelector('.cta-button')?.addEventListener('click', (e) => {
+        e.preventDefault();
+        openContactForm("Get In Touch");
+    });
+    
+    // "Learn More" buttons in services
+    document.querySelectorAll('.service-card .btn').forEach(btn => {
+        if (!btn.href || btn.href.includes('#')) {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const serviceTitle = btn.closest('.service-card').querySelector('h3').textContent;
+                openContactForm(`Learn More About ${serviceTitle}`);
+            });
+        }
+    });
+    
+    // "Explore Features" button in hero
     document.querySelector('.hero-btns .btn[href="#services"]')?.addEventListener('click', (e) => {
         e.preventDefault();
         window.scrollTo({
@@ -469,24 +613,22 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
     
-    // Contact buttons
-    document.querySelectorAll('a[href="#contact"]').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            e.preventDefault();
-            openContactModal();
+    // "View Plans" button in hero
+    document.querySelector('.hero-btns .btn[href="#pricing"]')?.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({
+            top: document.getElementById('pricing').offsetTop - 80,
+            behavior: 'smooth'
         });
     });
     
-    // CTA button
-    document.querySelector('.cta .btn')?.addEventListener('click', (e) => {
-        e.preventDefault();
-        openContactModal();
-    });
-    
-    // "Get In Touch" button in About section
-    document.querySelector('.cta-button')?.addEventListener('click', (e) => {
-        e.preventDefault();
-        openContactModal("Get In Touch");
+    // Pricing card buttons
+    document.querySelectorAll('.pricing-footer .btn').forEach((btn, index) => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const planNames = ['Starter', 'Standard', 'Enterprise'];
+            handlePricingButton(planNames[index] || '');
+        });
     });
     
     // Newsletter form submission
@@ -495,10 +637,238 @@ document.addEventListener('DOMContentLoaded', () => {
         newsletterForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const emailInput = newsletterForm.querySelector('.newsletter-input');
-            if (emailInput.value) {
-                alert('Thank you for subscribing to our newsletter!');
+            const email = emailInput.value.trim();
+            
+            if (email && validateEmail(email)) {
+                // Show success message
+                alert('Thank you for subscribing to our newsletter! You will receive updates and news about Pulsecrafts.');
+                
+                // Store subscription (in a real app, this would go to a server)
+                localStorage.setItem('newsletterSubscribed', 'true');
+                localStorage.setItem('newsletterEmail', email);
+                
+                // Reset form
                 emailInput.value = '';
+            } else {
+                alert('Please enter a valid email address.');
             }
         });
     }
+    
+    // Footer links functionality
+    document.querySelectorAll('.footer-links a').forEach(link => {
+        if (!link.href || link.href === '#') {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const linkText = link.textContent;
+                
+                // Handle different footer links
+                switch(linkText.trim()) {
+                    case 'Pulsecrafts Worksuite':
+                        window.scrollTo({
+                            top: document.getElementById('services').offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                        break;
+                    case 'Cryptocurrency Services':
+                    case 'Cloud Services':
+                        // Find the crypto or cloud service card and highlight it
+                        const serviceCards = document.querySelectorAll('.service-card');
+                        serviceCards.forEach(card => {
+                            if (card.textContent.includes(linkText.split(' ')[0])) {
+                                card.style.boxShadow = '0 0 0 3px var(--primary)';
+                                setTimeout(() => {
+                                    card.style.boxShadow = '';
+                                }, 2000);
+                            }
+                        });
+                        window.scrollTo({
+                            top: document.getElementById('services').offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                        break;
+                    case 'Custom Solutions':
+                    case 'Enterprise Solutions':
+                        openContactForm(`Inquiry: ${linkText}`);
+                        break;
+                    case 'About Us':
+                        window.scrollTo({
+                            top: document.getElementById('about').offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                        break;
+                    case 'Careers':
+                        alert('Career opportunities information would be displayed here. Please email careers@pulsecraft.com for current openings.');
+                        break;
+                    case 'Newsroom':
+                        alert('Our latest news and announcements would be displayed here.');
+                        break;
+                    case 'Help Center':
+                        // Scroll to FAQ
+                        window.scrollTo({
+                            top: document.getElementById('faq').offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                        break;
+                    case 'Documentation':
+                        alert('Technical documentation would open in a new tab.');
+                        window.open('#', '_blank');
+                        break;
+                    case 'API Reference':
+                        alert('API documentation would open in a new tab.');
+                        window.open('#', '_blank');
+                        break;
+                    case 'Blog':
+                        alert('Blog would open in a new tab.');
+                        window.open('#', '_blank');
+                        break;
+                    case 'Webinars':
+                        alert('Upcoming webinar schedule would be displayed here.');
+                        break;
+                    case 'Community':
+                        alert('Community forum would open in a new tab.');
+                        window.open('#', '_blank');
+                        break;
+                    case 'Pricing Plans':
+                        window.scrollTo({
+                            top: document.getElementById('pricing').offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                        break;
+                    case 'FAQ':
+                        window.scrollTo({
+                            top: document.getElementById('faq').offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                        break;
+                    default:
+                        // For any other links, just scroll to top
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            });
+        }
+    });
+    
+    // Social media links
+    document.querySelectorAll('.social-icons a').forEach(socialLink => {
+        socialLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            const platform = socialLink.getAttribute('aria-label').toLowerCase();
+            let url = '#';
+            
+            switch(platform) {
+                case 'linkedin':
+                    url = 'https://linkedin.com/company/pulsecrafts';
+                    break;
+                case 'github':
+                    url = 'https://github.com/pulsecrafts';
+                    break;
+                case 'youtube':
+                    url = 'https://youtube.com/c/pulsecrafts';
+                    break;
+            }
+            
+            alert(`Redirecting to our ${platform} page...`);
+            window.open(url, '_blank');
+        });
+    });
+    
+    // Navigation active state
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('section[id]');
+    
+    function setActiveNavLink() {
+        let current = '';
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 100;
+            const sectionHeight = section.clientHeight;
+            
+            if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                current = section.getAttribute('id');
+            }
+        });
+        
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${current}`) {
+                link.classList.add('active');
+            }
+        });
+    }
+    
+    window.addEventListener('scroll', setActiveNavLink);
+    
+    // Add some basic validation helper
+    function validateEmail(email) {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email);
+    }
+    
+    // Initialize active nav link on load
+    setActiveNavLink();
 });
+
+// Add CSS for contact form
+const contactFormCSS = `
+    .contact-form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .form-group label {
+        font-weight: 600;
+        color: var(--dark);
+        font-size: 0.9rem;
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 12px 15px;
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-family: 'Poppins', sans-serif;
+        transition: all 0.3s;
+    }
+    
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(42, 110, 255, 0.1);
+    }
+    
+    .checkbox-label {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: normal;
+        cursor: pointer;
+    }
+    
+    .checkbox-label input {
+        width: 18px;
+        height: 18px;
+    }
+    
+    .submit-btn {
+        margin-top: 10px;
+        padding: 15px 30px;
+        font-size: 1.1rem;
+    }
+`;
+
+// Add the CSS to the document
+const styleSheet = document.createElement("style");
+styleSheet.textContent = contactFormCSS;
+document.head.appendChild(styleSheet);
